@@ -1,13 +1,12 @@
-import dbConnect, { isCollectionExists } from "@/lib/mongodb";
+import dbConnect, { isCollectionExists } from "../../../../lib/mongodb";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import { URLSearchParams } from "url";
 
-export const GET = async (req: NextRequest, res, ...other) => {
+export const GET = async (req: NextRequest, { params }) => {
     try {
         await dbConnect();
-        // const { page = 1, limit = 10 } = ;
-        const collection = req.url.includes("?") ? req.url.split("?")[0].split("/").pop() || "" : req.url.split("/").pop() || "";
+        const { collection }: any = params;
         // add check to see if the collection exists
         if (!isCollectionExists(collection))
             return new NextResponse("Collection not found", { status: 404 });

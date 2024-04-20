@@ -1,4 +1,4 @@
-import dbConnect, { isCollectionExists } from "../../../../lib/mongodb";
+import dbConnect, { isCollectionExists } from "@/lib/mongodb";
 import mongoose from "mongoose";
 import { NextRequest, NextResponse } from "next/server";
 import { URLSearchParams } from "url";
